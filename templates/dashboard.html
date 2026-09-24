@@ -99,6 +99,41 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Observer to replace logo when it appears
+            const observer = new MutationObserver((mutations) => {
+                // Find all svgs
+                const svgs = document.querySelectorAll('svg');
+                svgs.forEach(svg => {
+                    if (svg.innerHTML.includes('Next Billion Native Commerce') || svg.innerHTML.includes('nxtbn')) {
+                        const h1 = document.createElement('h2');
+                        h1.textContent = "Mounika's Ecommerce";
+                        h1.style.color = '#0caf60';
+                        h1.style.fontWeight = 'bold';
+                        h1.style.margin = '0';
+                        svg.replaceWith(h1);
+                    }
+                });
+                
+                // Find all logo images
+                const imgs = document.querySelectorAll('img[src*="nxtbn"], img[alt*="logo" i]');
+                imgs.forEach(img => {
+                    const h1 = document.createElement('h2');
+                    h1.textContent = "Mounika's Ecommerce";
+                    h1.style.color = '#0caf60';
+                    h1.style.fontWeight = 'bold';
+                    h1.style.margin = '0';
+                    img.replaceWith(h1);
+                });
+            });
+            
+            const root = document.getElementById('root');
+            if (root) {
+                observer.observe(root, { childList: true, subtree: true });
+            }
+        });
+    </script>
 </head>
 
 <body>
